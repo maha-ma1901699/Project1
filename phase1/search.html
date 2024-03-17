@@ -3,32 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Main Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .username {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-container input[type="text"] {
+            width: 60%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-container button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+        .item-list {
+            list-style: none;
+            padding: 0;
+        }
+        .item {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
-    <form action="#" method="post">
-        <div class="imgcontainer">
-          <img src="images/banner.png" alt="Avatar" class="avatar">
+    <div class="container">
+        <div class="header">
+            <div class="username">Welcome, User123</div>
+            <div class="search-container">
+                <label for="searchInput">Search available items:</label>
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button onclick="searchItems()">Search</button>
+            </div>
         </div>
-      
-        <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-      
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-      
-          <button type="submit">Login</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
-        </div>
-      
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" class="cancelbtn">Cancel</button>
-          <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-      </form>
-       
+        <ul id="itemList" class="item-list">
+            <!-- Item list will be dynamically populated here -->
+        </ul>
+    </div>
+
+    <script>
+        // Sample items data (replace this with your actual data from items.json)
+        var itemsData = [
+            { id: 1, name: "Item 1", description: "Description of Item 1" },
+            { id: 2, name: "Item 2", description: "Description of Item 2" },
+            { id: 3, name: "Item 3", description: "Description of Item 3" }
+        ];
+
+        // Function to search items
+        function searchItems() {
+            var searchInput = document.getElementById("searchInput").value.toLowerCase();
+            var filteredItems = itemsData.filter(function(item) {
+                return item.name.toLowerCase().includes(searchInput) || item.description.toLowerCase().includes(searchInput);
+            });
+            displayItems(filteredItems);
+        }
+
+        // Function to display items
+        function displayItems(items) {
+            var itemList = document.getElementById("itemList");
+            itemList.innerHTML = ""; // Clear previous items
+
+            items.forEach(function(item) {
+                var li = document.createElement("li");
+                li.className = "item";
+                li.textContent = "Name: " + item.name + ", Description: " + item.description;
+                itemList.appendChild(li);
+            });
+        }
+
+        // Initial display of items when page loads
+        displayItems(itemsData);
+    </script>
 </body>
 </html>
