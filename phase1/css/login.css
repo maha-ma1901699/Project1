@@ -1,0 +1,96 @@
+
+/* Reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    width: 90%;
+    background-color: #f5f5dc; /* Light beige background color */
+    margin: auto; /* Margin around the page */
+}
+
+.page-layout {
+    display: grid;
+    grid-template-areas: 
+    'header header'
+    'main main'
+    'footer footer';
+}
+/* header */
+.header {
+    grid-area: header;
+    position: relative;
+    height: 25vh;
+    overflow: hidden;
+}
+/* header img */
+.background img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1; /*send img to back*/
+    object-fit: cover;
+}
+/* header title */
+#title { 
+    background-position: center top; 
+    color: white;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Form styling */
+/* main area */
+.main-container {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%; /*Set the width to take full available width */
+} 
+form {
+    margin: 20px auto; /* Margin to center the form */
+    text-align: center; /* Center align the form elements */
+}
+
+h3 {
+    color: #fff; /* White text color */
+    font-weight: bold; /* Bold font weight */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 300px; /* Width of the input fields */
+    padding: 10px; /* Padding */
+    margin: 10px 0; /* Margin top and bottom */
+    border-radius: 5px; /* Rounded corners */
+    border: 2px solid tan; /* Solid tan border */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none; /* Remove outline on focus */
+    border-color: #a52a2a; /* Darker tan color on focus */
+}
+
+button {
+    padding: 10px 20px; /* Padding */
+    margin: 10px; /* Margin */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: tan; /* Tan background color */
+    color: #fff; /* White text color */
+    font-weight: bold; /* Bold font weight */
+    cursor: pointer; /* Cursor pointer */
+}
+
+button:hover {
+    background-color: #8b4513; /* Darker tan color on hover */
+}

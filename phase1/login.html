@@ -3,57 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        .container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: darkred;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: brown;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: rgb(145, 82, 50);
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color:rgb(145, 82, 50);
-            color:wheat;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: darkred;
-        }
-    </style>
+    <link rel="stylesheet" href="css/login.css">
+    <!-- <title>Login</title> -->
 </head>
 <body>
-    <div class="container">
-        <h2><b>HANDMADE ENGINEER</b></h2>
+ <div class="page-layout">
+    <header class="header">
+        <h1 id="title"><b>HANDMADE ENGINEER</b></h1>
+        <img src="images/banner.JPG" alt="">
+    </header>
+
+    <main class="main-container">
         <form id="loginForm">
             <div class="form-group">
                 <label for="username"><b>Username:</b></label>
@@ -63,11 +23,17 @@
                 <label for="password"><b>Password:</b></label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn"><b>Login</b></button>
+            <div class="form-group">
+                <button type="submit" class="btn"><b>Login</b></button>
+                <button type="button" class="btn cancel"><b>Cancel</b></button>
+            </div>
         </form>
-    </div>
+    </main>
 
-    <script>
+</div>
+
+    <!-- WE DO NOT NEED TO ADD SCRIPT IN HTML, THIS IS THE JOB OF JAVASCRIPT!!!!
+        <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
             event.preventDefault();
             var username = document.getElementById("username").value;
@@ -79,6 +45,6 @@
             // For demonstration purposes, alert is used here
             alert("Username: " + username + "\nPassword: " + password);
         });
-    </script>
+    </script> -->
 </body>
 </html>
