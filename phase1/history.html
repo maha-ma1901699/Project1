@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase History</title>
+</head>
+<body>
+    <h1>Purchase History</h1>
+    <ul class="purchase-list" id="purchaseList">
+    </ul>
+
+    <script>
+        var purchaseHistory = [
+            { id: 1, itemName: "Item 1", price: "$10.00", date: "2024-03-20" },
+            { id: 2, itemName: "Item 2", price: "$20.00", date: "2024-03-18" },
+            { id: 3, itemName: "Item 3", price: "$15.00", date: "2024-03-15" },
+        ];
+
+        function displayPurchaseHistory() {
+            var purchaseList = document.getElementById("purchaseList");
+            purchaseList.innerHTML = ""; 
+
+            purchaseHistory.forEach(function(item) {
+                var listItem = document.createElement("li");
+                listItem.innerHTML = `
+                    <strong>${item.itemName}</strong> - ${item.price} (Purchased on ${item.date})
+                `;
+                purchaseList.appendChild(listItem);
+            });
+        }
+
+        window.onload = function() {
+            displayPurchaseHistory();
+        };
+    </script>
+</body>
+</html>

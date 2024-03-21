@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .item-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .item:hover {
+            background-color: #f0f0f0;
+        }
+        .item-details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seller Dashboard</h1>
+    
+    <h2>Items Currently on Sale</h2>
+    <ul class="item-list" id="itemsOnSale">
+    </ul>
+    
+    <h2>Sale History</h2>
+    <ul class="item-list" id="saleHistory">
+    </ul>
+
+    <script>
+        var itemsOnSale = [
+            { id: 1, itemName: "Item 1", price: "$20.00", seller: "Seller A" },
+            { id: 2, itemName: "Item 2", price: "$15.00", seller: "Seller B" },
+        ];
+
+        var saleHistory = [
+            { id: 101, itemName: "Item 1", price: "$20.00", buyer: "Buyer X" },
+            { id: 102, itemName: "Item 2", price: "$15.00", buyer: "Buyer Y" },
+        ];
+
+        function displayItemsOnSale() {
+            var itemsOnSaleList = document.getElementById("itemsOnSale");
+            itemsOnSaleList.innerHTML = ""; 
+
+            itemsOnSale.forEach(function(item) {
+                var listItem = document.createElement("li");
+                listItem.classList.add("item");
+                listItem.textContent = item.itemName + " - " + item.price + " (Seller: " + item.seller + ")";
+                listItem.onclick = function() {
+                    showItemDetails(item);
+                };
+                itemsOnSaleList.appendChild(listItem);
+            });
+        }
+
+
+        function showItemDetails(item) {
+            var detailsContainer = document.createElement("div");
+            detailsContainer.classList.add("item-details");
+            detailsContainer.innerHTML = "<strong>Item Name:</strong> " + item.itemName + "<br>" +
+                                          "<strong>Price:</strong> " + item.price + "<br>" +
+                                          "<strong>Seller:</strong> " + item.seller;
+            document.body.appendChild(detailsContainer);
+        }
+
+        
+        function displaySaleHistory() {
+            var saleHistoryList = document.getElementById("saleHistory");
+            saleHistoryList.innerHTML = ""; 
+
+            saleHistory.forEach(function(item) {
+                var listItem = document.createElement("li");
+                listItem.classList.add("item");
+                listItem.textContent = item.itemName + " - " + item.price + " (Sold to: " + item.buyer + ")";
+                saleHistoryList.appendChild(listItem);
+            });
+        }
+
+        window.onload = function() {
+            displayItemsOnSale();
+            displaySaleHistory();
+        };
+    </script>
+</body>
+</html>
