@@ -1,51 +1,132 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset and basic styling */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+
+body {
+    font-family: Arial, sans-serif;
+    width: 90%;
+    background-color: #f5f5dc; /* Light beige background color */
+    margin: auto; /* Margin around the page */
 }
+
+.page-layout {
+    display: grid;
+    grid-template-areas: 
+    'header header'
+    'main main'
+    'footer footer';
+}
+/* header */
+
 .header {
+    grid-area: header;
+    position: relative;
+    height: 35vh;
+    overflow: hidden;
+}
+.user-info {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px;
+
 }
-.username {
-    font-size: 18px;
-    font-weight: bold;
+.user-infoo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
-.search-container {
+/* header img */
+.background img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1; /*send img to back*/
+    object-fit: cover;
+}
+/* header title */
+#title { 
+    background-position: center ; 
+    color: white;
     text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Form styling */
+/* main area */
+.main-container {
+    grid-area: main;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    width: 100%; /*Set the width to take full available width */
+} 
+
+.search-container {
     margin-bottom: 20px;
+    text-align: center;
 }
-.search-container input[type="text"] {
-    width: 60%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+
+input[type="text"],
+input[type="password"] {
+    width: 300px; /* Width of the input fields */
+    padding: 10px; /* Padding */
+    margin: 10px 0; /* Margin top and bottom */
+    border-radius: 5px; /* Rounded corners */
+    border: 2px solid tan; /* Solid tan border */
 }
-.search-container button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none; /* Remove outline on focus */
+    border-color: #a52a2a; /* Darker tan color on focus */
 }
-.search-container button:hover {
-    background-color: #0056b3;
+
+.item-container {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; 
+    gap: 1rem;
 }
-.item-list {
-    list-style: none;
-    padding: 0;
+
+.item-card {
+    background-color: #fff; /* White background color for item card */
+    padding: 20px; /* Add padding around the card */
+    margin-bottom: 20px; /* Add margin between cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to cards */
 }
-.item {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    padding: 10px;
+
+.item-card img {
+    max-width: 100%; /* Make sure the image fits inside the card */
+}
+
+.item-card h2 {
+    margin-top: 10px; /* Add margin between image and name */
+}
+
+.item-card p {
+    margin: 5px 0; /* Add margin to price */
+}
+
+button {
+    padding: 10px 20px; /* Padding */
+    margin: 10px; /* Margin */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: tan; /* Tan background color */
+    color: #fff; /* White text color */
+    font-weight: bold; /* Bold font weight */
+    cursor: pointer; /* Cursor pointer */
+}
+
+button:hover {
+    background-color: #8b4513; /* Darker tan color on hover */
 }
