@@ -3,57 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/search.css">
-    <!-- <title>Main Page</title> -->
-
+    <link rel="stylesheet" href="css/search.css"> 
+    <title>Search</title>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="username">Welcome, User123</div>
-            <div class="search-container">
-                <label for="searchInput">Search available items:</label>
-                <input type="text" id="searchInput" placeholder="Search...">
-                <button onclick="searchItems()">Search</button>
+    <div class="page-layout">
+        <header class="header">
+            <div class="user-info"><b>Username</b>
             </div>
-        </div>
-        <ul id="itemList" class="item-list">
-            <!-- Item list will be dynamically populated here -->
-        </ul>
+            <div class="user-infoo">
+                <span class="balance"><b>Login </b></span>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <h1 id="title"><b>HANDMADE ENGINEER</b></h1>
+            <div class="search-container">
+                <input type="text" id="search" name="search" placeholder="Search...">
+                <button type="submit" class="btn-search"><b>Search</b></button>
+            </div>
+        </header>
+
+        <main class="main-container">
+            
+
+            <div class="item-container">
+                <div class="item-card">
+                    <img src="images/item1.jpg" alt="Item 1">
+                    <h2>Item Name 1</h2>
+                    <p>$10</p>
+                    <button type="button" class="btn-add"><b>Add</b></button>
+                </div>
+
+                <div class="item-card">
+                    <img src="images/item2.jpg" alt="Item 2">
+                    <h2>Item Name 2</h2>
+                    <p>$15</p>
+                    <button type="button" class="btn-add"><b>Add</b></button>
+                </div>
+
+                <div class="item-card">
+                    <img src="images/item3.jpg" alt="Item 3">
+                    <h2>Item Name 3</h2>
+                    <p>$15</p>
+                    <button type="button" class="btn-add"><b>Add</b></button>
+                </div>
+
+
+                <div class="item-card">
+                    <img src="images/item4.jpg" alt="Item 4">
+                    <h2>Item Name 4</h2>
+                    <p>$14</p>
+                    <button type="button" class="btn-add"><b>Add</b></button>
+                </div>
+
+                    <div class="item-card">
+                        <img src="images/item5.jpg" alt="Item 5">
+                        <h2>Item Name 5</h2>
+                        <p>$15</p>
+                        <button type="button" class="btn-add"><b>Add</b></button>
+                    </div>
+                    
+                    <div class="item-card">
+                        <img src="images/item6.jpg" alt="Item 6">
+                        <h2>Item Name 6</h2>
+                        <p>$15</p>
+                        <button type="button" class="btn-add"><b>Add</b></button>
+                    </div>
+
+            </div>
+        </main>
     </div>
-
-    <script>
-        // Sample items data (replace this with your actual data from items.json)
-        var itemsData = [
-            { id: 1, name: "Item 1", description: "Description of Item 1" },
-            { id: 2, name: "Item 2", description: "Description of Item 2" },
-            { id: 3, name: "Item 3", description: "Description of Item 3" }
-        ];
-
-        // Function to search items
-        function searchItems() {
-            var searchInput = document.getElementById("searchInput").value.toLowerCase();
-            var filteredItems = itemsData.filter(function(item) {
-                return item.name.toLowerCase().includes(searchInput) || item.description.toLowerCase().includes(searchInput);
-            });
-            displayItems(filteredItems);
-        }
-
-        // Function to display items
-        function displayItems(items) {
-            var itemList = document.getElementById("itemList");
-            itemList.innerHTML = ""; // Clear previous items
-
-            items.forEach(function(item) {
-                var li = document.createElement("li");
-                li.className = "item";
-                li.textContent = "Name: " + item.name + ", Description: " + item.description;
-                itemList.appendChild(li);
-            });
-        }
-
-        // Initial display of items when page loads
-        displayItems(itemsData);
-    </script>
 </body>
 </html>

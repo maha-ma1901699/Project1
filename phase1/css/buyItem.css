@@ -1,36 +1,115 @@
+/* Reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
+    width: 90%;
+    background-color: #f5f5dc; /* Light beige background color */
+    margin: auto; /* Margin around the page */
 }
-.container {
-    max-width: 600px;
-    margin: 0 auto;
+
+.page-layout {
+    display: grid;
+    grid-template-areas: 
+    'header header'
+    'main main'
+    'footer footer';
+}
+
+/* Header */
+.header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    
+   
+}
+#title { 
+    background-position: center ; 
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px;
+
+}
+.user-infoo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+ .balance {
+    margin-left: 20px;
+ }
+/* Main Content */
+.main-container {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
 }
-.form-group {
+
+.item-container {
+    width: 50%;
+    padding: 20px;
+}
+
+.checkout-container {
+    width: 50%;
+    padding: 20px;
+}
+
+.chosen-item-card {
+    background-color: #fff;
+    padding: 20px;
     margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+text-align: center;}
+
+.chosen-item-card h2 {
+    margin-bottom: 10px;
 }
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
+
+.checkout-panel{
+    background-color: #8d8b8b;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    input[type="text"],
+    input[type="number"] {
+        width: 300px; /* Width of the input fields */
+        padding: 10px; /* Padding */
+        margin: 10px 0; /* Margin top and bottom */
+        border-radius: 5px; /* Rounded corners */
+        border: 2px solid tan; /* Solid tan border */
+    }
 }
-.form-group input[type="text"],
-.form-group input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-.btn {
+
+.buy-button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
+    background-color: tan;
     color: #fff;
+    font-weight: bold;
     cursor: pointer;
 }
-.btn:hover {
-    background-color: #0056b3;
+
+.buy-button:hover {
+    background-color: #8b4513;
 }
