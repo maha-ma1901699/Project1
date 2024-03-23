@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5dc; /* Light beige background color */
+}
+
+.page-layout {
+    display: grid;
+    grid-template-areas: 
+    'header'
+    'main';
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Header styling */
+.header {
+    grid-area: header;
+    text-align: center;
+}
+
+#title { 
+    background-position: center ; 
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.user-infoo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+/* Main container styling */
+.main-container {
+    grid-area: main;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Section styling */
+.selling-section,
+.sold-section {
+    flex: 1;
+    background-color: #fff; /* White background color */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+    gap: 1rem;
+}
+
+.section-title {
+    background-color: #8b8e8b; /* Green background color */
+    color: white; /* Title text color */
+    padding: 10px;
+    border-radius: 10px 10px 0 0; /* Rounded corners for top */
+}
+
+.item-list {
+    list-style: none;
+    padding: 20px;
+}
+
+.item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* Separator line between items */
+    cursor: pointer; /* Pointer cursor when hovering */
+}
+
+.item:last-child {
+    border-bottom: none; /* Remove border from last item */
+}
+
+.item:hover {
+    background-color: #f9f9f9; /* Light gray background color on hover */
+}
