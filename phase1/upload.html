@@ -4,43 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Item for Sale</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/upload.css">
 </head>
 <body>
-    <header>
-        <h1>Upload Item for Sale</h1>
-    </header>
+    <div class="page-layout">
+        <header class="header">
+            <div class="user-info"><b>Username</b>
+            </div>
+            <h2 id="title"><b>HANDMADE ENGINEER</b></h2>
+            <div class="user-infoo">
+                <span class="balance"><b>Balance: </b></span>
+                <input type="number" id="Balance" name="Balance">
+            </div>
+           <hr> 
+        </header>
+        <main class="main-container">
+            
+            <div class="item-container">
+                <!-- Item Card for Chosen Item -->
+                <div class="chosen-item-card">
+                   
+                    <img src="images/item.jpg" alt="Item ">
+                    <br><br>
+                </div>
+            </div>
 
-    <main>
-        <form id="uploadForm">
-            <label for="itemName">Item Name:</label>
-            <input type="text" id="itemName" name="itemName" required>
+            <div class="checkout-container">
+                <div class="checkout-panel">
+                    
+                    <h3>Item Name </h3>
 
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" min="0" step="0.01" required>
+                    <div class="price-card">
+                        <!-- Address Card -->
+                    <label for="price"><b>Price:</b></label>
+                        <input type="text" id="price" name="price" required>
+                    </div>
+                    <br>
+                    <div class="quantity-card">
+                        <!-- Quantity Card -->
+                        <label for="Quantity"><b>Quantity:</b></label>
+                        <input type="number" min="1" value="1">
+                    </div>
+                    <br>
+                  
+                    <div class="details-card">
+                        <!-- Total Card -->
+                        <label for="details"><b>Details:</b></label>
+                        <input type="text" id="details" name="details" required>
+                    </div>
+                    <br>
 
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" required>
+                    <button class="upload-button">Upload</button>
+                </div>
+            </div>
+        </main>
 
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea>
 
-            <label for="image">Image:</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
 
-            <input type="submit" value="Upload Item">
-        </form>
-    </main>
-
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sales.html">View Sales</a></li>
-            </ul>
-        </nav>
-    </footer>
-
-    <script src="scripts.js"></script>
 </body>
 </html>
