@@ -3,36 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/history.css"> 
     <title>Purchase History</title>
 </head>
-<body>
-    <h1>Purchase History</h1>
-    <ul class="purchase-list" id="purchaseList">
-    </ul>
 
-    <script>
-        var purchaseHistory = [
-            { id: 1, itemName: "Item 1", price: "$10.00", date: "2024-03-20" },
-            { id: 2, itemName: "Item 2", price: "$20.00", date: "2024-03-18" },
-            { id: 3, itemName: "Item 3", price: "$15.00", date: "2024-03-15" },
-        ];
+    <body>
+        <div class="page-layout">
+            <header class="header">
+                <div class="user-info"><b>Username</b>
+                </div>
+                <h3>HANDMADE ENGINEER</h3>
+                <br>
+                <hr>
+                <br>
+                <h1 id="title"><b>Purchase History</b></h1>
+            </header>
+    
+            <main class="main-container">
+                
+                <div class="item-container">
+                    <div class="item-card">
+                        <div class="left-side">
+                            <img src="images/item1.jpg" alt="Item 1">
+                            <h3>Item Name </h3>
+                        </div>
+                        <div class="right-side">
+                            <div class="item-info">
+                                <label for="Quantity"><b>Quantity:</b></label>
+                                <input type="number" min="1" value="1">
+                            </div>
+                            <div class="item-info">
+                                <label for="price"><b>Price:</b></label>
+                                <input type="number" id="price" name="price" required>
+                            </div>
+                            <div class="item-info">
+                                <label for="Total"><b>Total:</b></label>
+                                <input type="number" id="total" name="total">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="item-card">
+                        <div class="left-side">
+                            <img src="images/item2.jpg" alt="Item 2">
+                            <h3>Item Name </h3>
+                        </div>
+                        <div class="right-side">
+                            <div class="item-info">
+                                <label for="Quantity"><b>Quantity:</b></label>
+                                <input type="number" min="1" value="1">
+                            </div>
+                            <div class="item-info">
+                                <label for="price"><b>Price:</b></label>
+                                <input type="number" id="price" name="price" required>
+                            </div>
+                            <div class="item-info">
+                                <label for="Total"><b>Total:</b></label>
+                                <input type="number" id="total" name="total">
+                            </div>
+                        </div>
+                    </div>
 
-        function displayPurchaseHistory() {
-            var purchaseList = document.getElementById("purchaseList");
-            purchaseList.innerHTML = ""; 
+                    <div class="item-card">
+                        <div class="left-side">
+                            <img src="images/item2.jpg" alt="Item 2">
+                            <h3>Item Name </h3>
+                        </div>
+                        <div class="right-side">
+                            <div class="item-info">
+                                <label for="Quantity"><b>Quantity:</b></label>
+                                <input type="number" min="1" value="1">
+                            </div>
+                            <div class="item-info">
+                                <label for="price"><b>Price:</b></label>
+                                <input type="number" id="price" name="price" required>
+                            </div>
+                            <div class="item-info">
+                                <label for="Total"><b>Total:</b></label>
+                                <input type="number" id="total" name="total">
+                            </div>
+                        </div>
+                    </div>
+    
+                   
+    
+    
+    
+                </div>
+            </main>
+        </div>
+    </body>
 
-            purchaseHistory.forEach(function(item) {
-                var listItem = document.createElement("li");
-                listItem.innerHTML = `
-                    <strong>${item.itemName}</strong> - ${item.price} (Purchased on ${item.date})
-                `;
-                purchaseList.appendChild(listItem);
-            });
-        }
 
-        window.onload = function() {
-            displayPurchaseHistory();
-        };
-    </script>
-</body>
 </html>
