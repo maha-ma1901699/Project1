@@ -13,6 +13,7 @@
         "type": "seller"
 
     },
+    
     {
         "id":3,
         "username": "user3",
@@ -25,6 +26,13 @@
         "username": "user4",
         "password": "pass4",
         "type": "customer"
+
+    },
+    {
+        "id":5,
+        "username": "user5",
+        "password": "pass5",
+        "type": "seller"
 
     }
 

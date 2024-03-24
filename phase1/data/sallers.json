@@ -1,0 +1,13 @@
+[
+    {
+        "id":2,
+        "companyName": "company1",
+        "bankAccount": "2222"
+    },
+    {
+        "id":5,
+        "companyName": "company2",
+        "bankAccount": "5555"
+    }
+
+]
