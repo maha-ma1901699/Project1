@@ -1,0 +1,21 @@
+[
+    {
+        "username": "user1",
+        "password": "pass1",
+        "type": "admin"
+
+    },
+    {
+        "username": "user2",
+        "password": "pass2",
+        "type": "seller"
+
+    },
+    {
+        "username": "user3",
+        "password": "pass3",
+        "type": "customer"
+
+    },
+
+]
