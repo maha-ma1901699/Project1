@@ -34,6 +34,13 @@
         "password": "pass5",
         "type": "seller"
 
+    },
+    {
+        "id":6,
+        "username": "user6",
+        "password": "pass6",
+        "type": "admin"
+
     }
 
 

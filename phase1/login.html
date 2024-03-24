@@ -24,7 +24,7 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn"><b>Login</b></button>
+                <button type="button" class="btn" id="buttonLogin"><b>Login</b></button>
                 <button type="button" class="btn cancel"><b>Cancel</b></button>
             </div>
         </form>
@@ -32,19 +32,7 @@
 
 </div>
 
-    <!-- WE DO NOT NEED TO ADD SCRIPT IN HTML, THIS IS THE JOB OF JAVASCRIPT!!!!
-        <script>
-        document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            
-            // Your code to verify login using users.json goes here
-            // You can use AJAX, Fetch API, or any other method to send the username and password to your server for verification
-            
-            // For demonstration purposes, alert is used here
-            alert("Username: " + username + "\nPassword: " + password);
-        });
-    </script> -->
+    
 </body>
+<script src="js/login.js"></script>
 </html>
