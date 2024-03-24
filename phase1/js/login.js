@@ -14,8 +14,17 @@ async function handleLoginClick() {
     if (! user){
         alert ("Invalid username or password")
     } else{
-        alert ("user id =" + user.id)
+        if (user.type === "admin"){
+            location.href= "admin.html"
 
+        }else if (user.type === "customer"){
+            location.href= "search.html"
+        }
+        else if (user.type === "seller"){
+            location.href= "sales.html"
+        } else{
+            alert ("User type not known")
+        }
     }
 }
 
