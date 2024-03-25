@@ -1,16 +1,24 @@
-const cardsContainer = document.querySelector("#cards"); 
 
 
 addEventListener("load", handleLoad);
-async function handleLoad(){
+async function handleLoad(){ 
+    const cardsContainer = document.querySelector("#cards"); 
+
     // alert("hello") 
     let url= "data/products.json"
     const data = await fetch(url)
     const productList = await data.json()
     let html = productListToCards(productList)
     //STOPPED HERE!!!
-    cardsContainer.innerHTML = html
-    alert(html)
+    if(cardsContainer) {
+        cardsContainer.innerHTML = html
+
+    }
+    else{
+        alert("error")
+    }
+    // cardsContainer.innerHTML = html
+    // alert(html)
 }
 
 function productToCard(product){
