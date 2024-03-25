@@ -4,6 +4,14 @@ addEventListener("load", handleLoad);
 async function handleLoad(){ 
     const cardsContainer = document.querySelector("#cards"); 
     const search_button = document.querySelector("#search_button"); 
+    const userinfodiv = document.querySelector("#user-info"); 
+    const userinformation = localStorage.getItem("username")
+    if(userinformation){
+userinfodiv.innerHTML=userinformation
+    }
+    else{
+        userinfodiv.innerHTML="no user"
+    }
    search_button. addEventListener("click", handleSearch);
     
 
