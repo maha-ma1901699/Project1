@@ -5,12 +5,15 @@ async function handleLoad(){
     const cardsContainer = document.querySelector("#cards"); 
     const search_button = document.querySelector("#search_button"); 
     const userinfodiv = document.querySelector("#user-info"); 
+    const logindiv = document.querySelector("#login"); 
     const userinformation = localStorage.getItem("username")
     if(userinformation){
 userinfodiv.innerHTML=userinformation
+logindiv.innerHTML=` <a href="login.html">  <span class="balance"><b>Logout </b></span> </a>`
     }
     else{
         userinfodiv.innerHTML="no user"
+        logindiv.innerHTML=` <a href="login.html">  <span class="balance"><b>Login </b></span> </a>`
     }
    search_button. addEventListener("click", handleSearch);
     
