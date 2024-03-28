@@ -1,25 +1,29 @@
 [
   {
+    "id":1,
     "productName": "clay mug1",
     "productImg": "clayMug.jpg",
     "productPrice": 10
   },
   {
+    "id":2,
     "productName": "clay mug2",
     "productImg": "clayMug.jpg",
     "productPrice": 20
   },
   {
+    "id":3,
     "productName": "clay mug3",
     "productImg": "clayMug.jpg",
     "productPrice": 30
   },
-  {
+  {    "id":4,
     "productName": "clay mug4",
     "productImg": "clayMug.jpg",
     "productPrice": 40
   },
   {
+    "id":5,
     "productName": "clay mug5",
     "productImg": "clayMug.jpg",
     "productPrice": 50

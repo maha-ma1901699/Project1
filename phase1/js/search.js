@@ -6,9 +6,10 @@ async function handleLoad(){
     const search_button = document.querySelector("#search_button"); 
     const userinfodiv = document.querySelector("#user-info"); 
     const logindiv = document.querySelector("#login"); 
-    const userinformation = localStorage.getItem("username")
+    const userinformation = localStorage.getItem("userobject")
     if(userinformation){
-userinfodiv.innerHTML=userinformation
+        const customer = JSON.parse(userinformation)
+userinfodiv.innerHTML=`${customer.name} ${customer.surename}`
 logindiv.innerHTML=` <a href="login.html">  <span class="balance"><b>Logout </b></span> </a>`
     }
     else{
@@ -59,9 +60,13 @@ function productToCard(product){
     <img src='productImages/${product.productImg}' alt='${product.productName}'>
     <h2>${product.productName}</h2>
     <p>QR${product.productPrice}</p>
-    <button type='button' class='btn-add'><b>Add</b></button>
+    <button type='button' class='btn-add' onclick= 'handleButtonClick(${product.id})'><b>Add</b></button>
 </div>`
 return html
+}
+function handleButtonClick(productID){
+window.location.href="buyItem.html?productId=" + productID
+
 }
 
 function productListToCards(productList){

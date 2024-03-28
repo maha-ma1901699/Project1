@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/buyitem.css">
     <title>Buy Item</title>
+    <script src="js/buyItem.js"> </script>
+
 </head>
 <body>
     <div class="page-layout">
@@ -13,8 +15,7 @@
             </div>
             <h2 id="title"><b>HANDMADE ENGINEER</b></h2>
             <div class="user-infoo">
-                <span class="balance"><b>Balance: </b></span>
-                <input type="number" id="Balance" name="Balance">
+                <span class="balance"><b>Balance: </b> </span> <span id="balancespan"> </span>
             </div>
            <hr> 
         </header>
@@ -25,10 +26,10 @@
                 <!-- Item Card for Chosen Item -->
                 <div class="chosen-item-card">
                    
-                    <img src="images/item.jpg" alt="Item ">
+                    <img src="" alt="Item  " id="productimage">
                     <br><br>
-                    <h3>Item Name </h3>
-                    <p>$$$</p>
+                    <h3><span id="itemname"></span> </h3>
+                    <p><span id="itemprice" ></span></p>
                 </div>
             </div>
 

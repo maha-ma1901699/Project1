@@ -24,7 +24,8 @@ async function handleLoginClick() {
             const data = await fetch(url)
             const customers = await data.json()
             const customer = customers.find(c=>c.id === user.id)
-            localStorage.setItem("username", customer.name +" " + customer.surename)
+            localStorage.setItem("userobject", JSON.stringify(customer))
+
 
             location.href= "search.html"
         }
@@ -33,7 +34,7 @@ async function handleLoginClick() {
             const data = await fetch(url)
             const sellers = await data.json()
             const seller = sellers.find(c=>c.id === user.id)
-            localStorage.setItem("companyname", seller.companyname)
+            localStorage.setItem("sellerobject", JSON.stringify(seller))
             location.href= "sales.html"
         } else{
             alert ("User type not known")
