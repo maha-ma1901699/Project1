@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/buyitem.css">
     <title>Buy Item</title>
-    <script src="js/buyItem.js"> </script>
+    <script src="js/buyItem.js" type="module"> </script>
 
 </head>
 <body>
@@ -34,11 +34,12 @@
             </div>
 
             <div class="checkout-container">
-\                <div class="checkout-panel">
+                <div class="checkout-panel">
+                    <form id="form">
                     <div class="quantity-card">
                         <!-- Quantity Card -->
                         <label for="Quantity"><b>Quantity:</b></label>
-                        <input type="number" min="1" id="quantity-input">
+                        <input type="number" min="1" id="quantity-input" name="quantity" required>
                     </div>
                     <br>
                     <div class="address-card">
@@ -54,7 +55,8 @@
                     </div>
                     <br>
 
-                    <button class="buy-button">Buy Now</button>
+                    <input  type="submit" class="buy-button" id="buy-button" value="Buy Now"> 
+                    </form>
                 </div>
             </div>
         </main>
