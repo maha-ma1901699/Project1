@@ -29,8 +29,8 @@
         return data
     }
 
-    async login(username,password){
-        const users = await this.getusers()
+    login(strUserName,strPassword){
+        const users = this.getUsers()
         const user= users.find(u => u.username == strUserName && u.password == strPassword)
         return user
 
