@@ -2,7 +2,7 @@ class Repository {
     constructor() {
         this.userspath = "data/users.json"
         this.customerspath = "data/customers.json"
-        this.sellerpath = "data/seller.json"
+        this.sellerpath = "data/sellers.json"
         this.productspath = "data/products.json"
         this.initialize()
     }
@@ -36,11 +36,32 @@ class Repository {
         const data = JSON.parse(localStorage.getItem(this.sellerpath))
         return data
     }
+    getProducts() {
+        const data = JSON.parse(localStorage.getItem(this.productspath))
+        return data
+
+    }
+    getProduct(id) {
+        const product = this.getProducts().find(p => p.id == parseInt(id))
+        return product
+
+    }
     getCurrentUser() {
         if (localStorage.getItem("userobject"))
             return JSON.parse(localStorage.getItem("userobject"))
         else
             return null
+    }
+    updateCurrentCustomer(newUser) {
+        localStorage.setItem("userobject", JSON.stringify(newUser))
+        const data = JSON.parse(localStorage.getItem(this.customerspath))
+        const index = data.findIndex(d => d.id == newUser.id)
+        if (index != -1) {
+            data.splice(index,1,newUser)
+            localStorage.setItem(this.customerspath,JSON.stringify(data))
+
+        }
+
     }
 
     login(strUserName, strPassword) {

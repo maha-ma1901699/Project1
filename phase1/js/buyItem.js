@@ -1,5 +1,4 @@
-import fs from 'fs-extra'
-
+const repo = new Repository()
 addEventListener("load" , handlePageLoad)
 async function handlePageLoad(){
     const balancespan= document.querySelector("#balancespan")
@@ -11,19 +10,18 @@ async function handlePageLoad(){
     const form = document.querySelector("#form")
     form.addEventListener("submit", handleFormSubmit)
     quantityinput.addEventListener("change", handleQuantityChange)
-    const userinformation = localStorage.getItem("userobject")
-    if(userinformation){
-        const customer = JSON.parse(userinformation)
+    const customer = repo.getCurrentUser()
+    if(customer){
+        
         userinfodiv.innerHTML=`${customer.name} ${customer.surename}`
         balancespan.innerHTML=customer.moneyBalance
-        let url= "data/products.json"
-        const data = await fetch(url)
-        const products = await data.json()
+       
+        const products = repo.getProducts()
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const currentproductid = urlParams.get('productId')
         if (currentproductid){
-        const product= products.find(p => p.id ==parseInt(currentproductid) )
+        const product= repo.getProduct(currentproductid)
             itemnamespan.innerHTML=product.productName
             itempricespan.innerHTML=product.productPrice
             itemimage.src=`productImages/${product.productImg}`
@@ -40,8 +38,11 @@ async function handlePageLoad(){
 
   function handleQuantityChange(e){
     const quantity= parseInt(e.target.value)
+    console.log("q ",quantity)
     const itempricespan= document.querySelector("#itemprice")
     const productPrice=parseInt(itempricespan.innerHTML)
+    console.log("price ",productPrice)
+
     const total= quantity*productPrice
     const totalinput= document.querySelector("#total")
     totalinput.value=total
@@ -49,29 +50,24 @@ async function handlePageLoad(){
   }  
 async function handleFormSubmit(e){
   const balancespan= document.querySelector("#balancespan")
-  const balance = parseInt(balancespan.value)
+  let balance = parseInt(balancespan.innerHTML)
   e.preventDefault()
   const formobject =formToObject(e.target)
   formobject.total= parseInt(formobject.total)
-  if (total<=balance){
-    balance= balance-total
+  if (formobject.total<=balance){
+    balance= balance-formobject.total
+    const customer = repo.getCurrentUser()
+
+    customer.moneyBalance=balance
+    repo.updateCurrentCustomer(customer)
     balancespan.innerHTML=balance
-    const userinformation = localStorage.getItem("userobject")
-    const currentuser= JSON.parse(userinformation)
-    currentuser.moneyBalance=balance
-    localStorage.setItem(userobject, JSON.stringify(currentuser))
-    let url= "data/customers.json"
-    const data = await fetch(url)
-    const users = await data.json()
-    const user= users.find(u => u.id == currentuser.id)
-    user.moneyBalance=balance
-    await fs.writeJson("./data/customers.json", users)
-    alert("Purchase sucssful ")
+
+      alert("Purchase sucssful ")
     
 
 
   }else{
-    alert("You dont have enough balance to buy this quantitiy of the item")
+    alert(`You dont have enough balance(${balance}) to buy this quantitiy of the item that has total(${formobject.total})`)
   }
   // todo.id = Date.now()
   // todos.push(todo)
