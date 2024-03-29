@@ -1,14 +1,31 @@
-import fs from 'fs-extra'
-export default class Repository {
+ class Repository {
     constructor() {
         this.userspath = "data/users.json"
         this.customerspath = "data/customers.json"
         this.sellerpath = "data/seller.json"
         this.productspath = "data/products.json"
+        this.initialize ()
+    }
+    async initialize(){
+        const allpaths= [
+            this.userspath , this.customerspath , this.sellerpath , this.productspath
+
+        ]
+        if(!localStorage.getItem("data_loaded")) {
+            for (const path of allpaths) {
+                const data = await fetch(path) 
+                const objects = await data.json()
+                localStorage.setItem(path,JSON.stringify(objects))
+                
+            }
+            localStorage.setItem("data_loaded",true)
+
+        }
+
     }
 
-    async getusers() {
-        const data = await fs.readJSON(this.userspath)
+    getUsers() {
+        const data = JSON.parse(localStorage.getItem(this.userspath))
         return data
     }
 
