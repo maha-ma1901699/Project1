@@ -131,6 +131,8 @@ class Repository {
         for (const h of history) {
             const product = this.getProduct(h.itemid)
             h.product=product
+            const customer = this.getCustomer(h.customerid)
+            h.customer = customer
 
         }
 

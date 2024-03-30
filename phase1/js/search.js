@@ -61,6 +61,8 @@ function productToCard(product) {
     <img src='productImages/${product.productImg}' alt='${product.productName}'>
     <h2>${product.productName}</h2>
     <p>QR${product.productPrice}</p>
+    <p>available: ${product.quantity}</p>
+
     <button type='button' class='btn-add' onclick= 'handleButtonClick(${product.id})'><b>Add</b></button>
 </div>`
     return html

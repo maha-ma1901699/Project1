@@ -40,6 +40,7 @@ body {
     grid-area: main;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
 }
 
 /* Section styling */
@@ -50,6 +51,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
     gap: 1rem;
+
 }
 
 .section-title {
@@ -76,4 +78,10 @@ body {
 
 .item:hover {
     background-color: #f9f9f9; /* Light gray background color on hover */
+}
+.table {
+    width: 100%;
+}
+th{
+    text-align: left;
 }

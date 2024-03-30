@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/sales.css"> 
     <script src="js/Repository.js"></script>
 
-    <script src="js/sale.js" type="module"> </script>
+    <script src="js/sale.js" > </script>
     <title>Sale Item</title>
 </head>
 <body>
@@ -23,10 +23,8 @@
                 <h2 class="section-title">Items for Sale</h2>
                 <table class="table" id="table">
                     <tr> <th> Item name </th>  <th>  Quantity</th> <th>Price </th></tr>
-                    <tbody id="table-body">
-                        <tr> <td> Item1</td> <td>10</td> <td> 10 QR</td></tr>
-                        <tr> <td> Item2</td> <td>10</td> <td> 20 QR</td></tr>
-                        <tr> <td> Item3</td> <td>10</td> <td> 30 QR</td></tr>
+                    <tbody id="table-sale-body">
+                      
                     </tbody>
                    
                 </table>
@@ -34,12 +32,13 @@
             </section>
             <section class="sold-section">
                 <h2 class="section-title">Sold Items</h2>
-                <ul class="item-list">
-                    <li class="item">Sold Item 1</li>
-                    <li class="item">Sold Item 2</li>
-                    <li class="item">Sold Item 3</li>
-                    <!-- Add more sold items as needed -->
-                </ul>
+                <table class="table" id="table">
+                    <tr> <th> Item name </th>  <th>  sale date</th> <th>customer </th></tr>
+                    <tbody id="table-history-body">
+                      
+                    </tbody>
+                   
+                </table>
             </section>
         </main>
     </div>
