@@ -16,7 +16,6 @@
     "sellerID":2,
     "quantity": 22
 
-
   },
   {
     "id":3,
@@ -43,6 +42,13 @@
     "productPrice": 200,
     "sellerID":5,
     "quantity": 2
+  },
+  {
+    "id":6,
+    "productName": "Plate",
+    "productImg": "plate.jpg",
+    "productPrice": 25,
+    "sellerID":5,
+    "quantity": 25
   }
-
 ]
