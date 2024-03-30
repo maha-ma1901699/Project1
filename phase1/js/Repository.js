@@ -117,6 +117,9 @@ class Repository {
         return user
 
     }
+    logout(){
+        localStorage.removeItem("userobject")
+    }
     clear() {
         localStorage.clear()
     }
@@ -163,7 +166,22 @@ class Repository {
         data.push(product)
         localStorage.setItem(this.productspath, JSON.stringify(data))
 
+    }
+    updateProduct(product){
+        product.id = parseInt(product.id)
 
+        alert(JSON.stringify(product))
+
+        const data = JSON.parse(localStorage.getItem(this.productspath))
+        const index = data.findIndex(d => d.id == product.id)
+        alert(index)
+        if (index != -1) {
+            // const newproduct = this.getProduct(product.id)
+            // newproduct.quantity -= soldQuantity
+            data.splice(index, 1, product)
+            localStorage.setItem(this.productspath, JSON.stringify(data))
+
+        }
 
     }
 

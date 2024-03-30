@@ -43,6 +43,8 @@
                         <th> Item name </th>
                         <th> sale date</th>
                         <th>customer </th>
+                        <th>Quantity</th>
+                        <th>Price</th>
                     </tr>
                     <tbody id="table-history-body">
 
@@ -74,7 +76,7 @@
                     <div class="quantity-card">
                         <!-- Quantity Card -->
                         <label for="Quantity"><b>Quantity:</b></label>
-                        <input type="number" min="1" value="1" name="quantity">
+                        <input type="number" min="1" value="1" name="quantity" id="quantity"> 
                     </div>
                     <br>
 
@@ -84,6 +86,7 @@
                         <input type="file" id="idimage" name="productImg" required>
                     </div>
                     <input type="hidden" id="sellerID" name="sellerID">
+                    <input type="hidden" id="itemId" name="id">
                     <br>
 
                     <button class="upload-button" id="upload-button" type="button">Upload</button>

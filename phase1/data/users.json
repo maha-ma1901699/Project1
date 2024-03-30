@@ -1,14 +1,14 @@
 [
     {
         "id":1,
-        "username": "user1",
+        "username": "sharifa",
         "password": "pass1",
         "type": "admin"
 
     },
     {
         "id":2,
-        "username": "user2",
+        "username": "deema",
         "password": "pass2",
         "type": "seller"
 
@@ -16,7 +16,7 @@
     
     {
         "id":3,
-        "username": "user3",
+        "username": "maha",
         "password": "pass3",
         "type": "customer"
 

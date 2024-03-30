@@ -82,6 +82,6 @@ function productListToCards(productList) {
 
 function logout(e) {
     // e.preventDefault()
-    repo.clear()
+    repo.logout()
     window.location.href = "login.html"
 }
