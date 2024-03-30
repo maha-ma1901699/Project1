@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/sales.css"> 
+    <link rel="stylesheet" href="css/sales.css">
     <script src="js/Repository.js"></script>
 
-    <script src="js/sale.js" > </script>
+    <script src="js/sale.js"> </script>
     <title>Sale Item</title>
 </head>
+
 <body>
     <div class="page-layout">
         <header class="header">
@@ -16,67 +18,79 @@
             <div class="user-infoo">
                 <span class="Username" id="user-info"><b>Username </b></span>
             </div>
-           <hr> 
+            <hr>
         </header>
         <main class="main-container">
             <section class="selling-section">
                 <h2 class="section-title">Items for Sale</h2>
                 <table class="table" id="table">
-                    <tr> <th> Item name </th>  <th>  Quantity</th> <th>Price </th></tr>
+                    <tr>
+                        <th> Item name </th>
+                        <th> Quantity</th>
+                        <th>Price </th>
+                    </tr>
                     <tbody id="table-sale-body">
-                      
+
                     </tbody>
-                   
+
                 </table>
-                
+
             </section>
             <section class="sold-section">
                 <h2 class="section-title">Sold Items</h2>
                 <table class="table" id="table">
-                    <tr> <th> Item name </th>  <th>  sale date</th> <th>customer </th></tr>
+                    <tr>
+                        <th> Item name </th>
+                        <th> sale date</th>
+                        <th>customer </th>
+                    </tr>
                     <tbody id="table-history-body">
-                      
+
                     </tbody>
-                   
+
                 </table>
             </section>
         </main>
         <div>
-            <button class="upload-button" type = "button" id="button-add">add item</button>
+            <button class="upload-button" type="button" id="button-add">add item</button>
 
         </div>
         <div class="checkout-container hidden" id="formcontainer">
             <div class="checkout-panel">
-                
-                <div class="price-card">
-                    <!-- Address Card -->
-                <label for="itemname"><b>Item Name:</b></label>
-                    <input type="text" id="itemname" name="itemname" required>
-                </div>
+                <form id ="itemform">
 
-                <div class="price-card">
-                    <!-- Address Card -->
-                <label for="price"><b>Price:</b></label>
-                    <input type="text" id="price" name="price" required>
-                </div>
-                <br>
-                <div class="quantity-card">
-                    <!-- Quantity Card -->
-                    <label for="Quantity"><b>Quantity:</b></label>
-                    <input type="number" min="1" value="1">
-                </div>
-                <br>
-              
-                <div class="details-card">
-                    <!-- Total Card -->
-                    <label for="details"><b>Details:</b></label>
-                    <input type="text" id="details" name="details" required>
-                </div>
-                <br>
+                    <div class="price-card">
+                        <!-- Address Card -->
+                        <label for="itemname"><b>Item Name:</b></label>
+                        <input type="text" id="itemname" name="productName" required>
+                    </div>
 
-                <button class="upload-button" id="upload-button" type="button">Upload</button>
+                    <div class="price-card">
+                        <!-- Address Card -->
+                        <label for="price"><b>Price:</b></label>
+                        <input type="text" id="price" name="productPrice" required>
+                    </div>
+                    <br>
+                    <div class="quantity-card">
+                        <!-- Quantity Card -->
+                        <label for="Quantity"><b>Quantity:</b></label>
+                        <input type="number" min="1" value="1" name="quantity">
+                    </div>
+                    <br>
+
+                    <div class="details-card">
+                        <!-- Total Card -->
+                        <label for="image"><b>image:</b></label>
+                        <input type="file" id="idimage" name="productImg" required>
+                    </div>
+                    <input type="hidden" id="sellerID" name="sellerID">
+                    <br>
+
+                    <button class="upload-button" id="upload-button" type="button">Upload</button>
+                </form>
             </div>
         </div>
     </div>
 </body>
+
 </html>

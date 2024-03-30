@@ -23,9 +23,14 @@ async function handleLoad() {
         const itemsforsale = repo.getItemsForSale(seller.id)
         const html2 = itemsforsale.map(h => itemsforsaleToRow(h)).join('')
         saleRows.innerHTML = html2
+        const selleridhidden = document.querySelector("#sellerID");
+        selleridhidden.value = seller.id
+
     }
     else {
         userinfodiv.innerHTML = "no user"
+        alert("you have to be a seller and you have to login")
+        window.location.href = "login.html"
     }
  
 }
@@ -34,6 +39,9 @@ function handleButtonClick(e){
     formcontainer.classList.remove("hidden")
 }
 function handleButtonUploadClick(){
+    const itemform = document.querySelector("#itemform")
+    const item = formToObject(itemform)
+    repo.addProduct(item)
     const formcontainer = document.querySelector("#formcontainer")
     formcontainer.classList.add("hidden")
 }
@@ -46,4 +54,14 @@ return html
 function historyToRow(history){
     const html = `<tr> <td> ${history.product.productName}</td> <td>${history.date}</td> <td> ${history.customer.name} </td></tr>`
     return html
+
 }
+function formToObject(form){
+    const formData = new FormData(form)
+    const data = {}
+    for (const [key, value] of formData){
+        data[key] = value
+    }
+    return data
+  }
+  

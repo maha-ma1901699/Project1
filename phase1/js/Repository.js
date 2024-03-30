@@ -75,20 +75,20 @@ class Repository {
         const data = JSON.parse(localStorage.getItem(this.customerspath))
         const index = data.findIndex(d => d.id == newUser.id)
         if (index != -1) {
-            data.splice(index,1,newUser)
-            localStorage.setItem(this.customerspath,JSON.stringify(data))
+            data.splice(index, 1, newUser)
+            localStorage.setItem(this.customerspath, JSON.stringify(data))
 
         }
 
     }
-    updateProductSaleQuantity(productid,soldQuantity){
+    updateProductSaleQuantity(productid, soldQuantity) {
         const data = JSON.parse(localStorage.getItem(this.productspath))
         const index = data.findIndex(d => d.id == productid)
         if (index != -1) {
             const newproduct = this.getProduct(productid)
-            newproduct.quantity-=soldQuantity
-            data.splice(index,1,newproduct)
-            localStorage.setItem(this.productspath,JSON.stringify(data))
+            newproduct.quantity -= soldQuantity
+            data.splice(index, 1, newproduct)
+            localStorage.setItem(this.productspath, JSON.stringify(data))
 
         }
 
@@ -117,32 +117,32 @@ class Repository {
         return user
 
     }
-    clear(){
+    clear() {
         localStorage.clear()
     }
 
-    addHistory(purchase){
-        const history= this.getHistory()
+    addHistory(purchase) {
+        const history = this.getHistory()
         history.push(purchase)
         localStorage.setItem(this.historypath, JSON.stringify(history))
 
     }
 
-    getCustomerHistory(customerid){
+    getCustomerHistory(customerid) {
         const customer = this.getCustomer(customerid)
-        const history= this.getHistory().filter(h => h.customerid == customer.id)
+        const history = this.getHistory().filter(h => h.customerid == customer.id)
         for (const h of history) {
             const product = this.getProduct(h.itemid)
-            h.product=product
+            h.product = product
         }
         return history
     }
-    getSellerHistory(sellerid){
+    getSellerHistory(sellerid) {
         const seller = this.getSeller(sellerid)
-        const history= this.getHistory()
+        const history = this.getHistory()
         for (const h of history) {
             const product = this.getProduct(h.itemid)
-            h.product=product
+            h.product = product
             const customer = this.getCustomer(h.customerid)
             h.customer = customer
 
@@ -150,10 +150,21 @@ class Repository {
 
         return history.filter(h => h.product.sellerID == sellerid)
     }
-    getItemsForSale(sellerid){
+    getItemsForSale(sellerid) {
         const seller = this.getSeller(sellerid)
-        const items= repo.getProducts().filter(p => p.quantity >0 && p.sellerID== sellerid)
+        const items = repo.getProducts().filter(p => p.quantity > 0 && p.sellerID == sellerid)
         return items
+    }
+    addProduct(product) {
+        const data = JSON.parse(localStorage.getItem(this.productspath))
+        const ids = data.map(d => d.id)
+        const maxid = Math.max(...ids)
+        product.id = maxid + 1
+        data.push(product)
+        localStorage.setItem(this.productspath, JSON.stringify(data))
+
+
+
     }
 
 }
