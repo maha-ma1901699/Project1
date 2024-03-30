@@ -5,6 +5,8 @@ async function handlePageLoad(){
     const balancespan= document.querySelector("#balancespan")
     const itemnamespan= document.querySelector("#itemname")
     const itempricespan= document.querySelector("#itemprice")
+    const itemavailable= document.querySelector("#available")
+
     const itemimage= document.querySelector("#productimage")
     const userinfodiv = document.querySelector("#user-info"); 
     const quantityinput = document.querySelector("#quantity-input"); 
@@ -20,12 +22,14 @@ async function handlePageLoad(){
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const currentproductid = urlParams.get('productId')
-        productid=currentproductid
+        productid=parseInt(currentproductid)
         if (currentproductid){
         const product= repo.getProduct(currentproductid)
             itemnamespan.innerHTML=product.productName
             itempricespan.innerHTML=product.productPrice
             itemimage.src=`productImages/${product.productImg}`
+            itemavailable.innerHTML = product.quantity
+            quantityinput.max = product.quantity
 
 
         }
@@ -61,6 +65,7 @@ async function handleFormSubmit(e){
 
     customer.moneyBalance=balance
     repo.updateCurrentCustomer(customer)
+    repo.updateProductSaleQuantity(productid,parseInt(formobject.quantity))
     balancespan.innerHTML=balance
     const purchase={
       itemid:productid,

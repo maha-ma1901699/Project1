@@ -81,6 +81,18 @@ class Repository {
         }
 
     }
+    updateProductSaleQuantity(productid,soldQuantity){
+        const data = JSON.parse(localStorage.getItem(this.productspath))
+        const index = data.findIndex(d => d.id == productid)
+        if (index != -1) {
+            const newproduct = this.getProduct(productid)
+            newproduct.quantity-=soldQuantity
+            data.splice(index,1,newproduct)
+            localStorage.setItem(this.productspath,JSON.stringify(data))
+
+        }
+
+    }
 
     login(strUserName, strPassword) {
         const users = this.getUsers()
