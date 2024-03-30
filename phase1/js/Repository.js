@@ -57,6 +57,12 @@ class Repository {
         return customer
 
     }
+    getSeller(id) {
+        const seller = this.getSellers().find(s => s.id == parseInt(id))
+        return seller
+
+    }
+
 
     getCurrentUser() {
         if (localStorage.getItem("userobject"))
@@ -88,7 +94,7 @@ class Repository {
 
 
             }
-            else if (user.type === "customer") {
+            else if (user.type === "seller") {
 
                 const sellers = this.getSellers()
                 const seller = sellers.find(c => c.id === user.id)
@@ -112,11 +118,28 @@ class Repository {
 
     getCustomerHistory(customerid){
         const customer = this.getCustomer(customerid)
-        const history= this.getHistory()
+        const history= this.getHistory().filter(h => h.customerid == customer.id)
         for (const h of history) {
             const product = this.getProduct(h.itemid)
             h.product=product
         }
         return history
     }
+    getSellerHistory(sellerid){
+        const seller = this.getSeller(sellerid)
+        const history= this.getHistory()
+        for (const h of history) {
+            const product = this.getProduct(h.itemid)
+            h.product=product
+
+        }
+
+        return history.filter(h => h.product.sellerID == sellerid)
+    }
+    getItemsForSale(sellerid){
+        const seller = this.getSeller(sellerid)
+        const items= repo.getProducts().filter(p => p.quantity >0 && p.sellerID== sellerid)
+        return items
+    }
+
 }
