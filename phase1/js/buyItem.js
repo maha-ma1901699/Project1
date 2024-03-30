@@ -84,10 +84,7 @@ async function handleFormSubmit(e){
   }else{
     alert(`You dont have enough balance(${balance}) to buy this quantitiy of the item that has total(${formobject.total})`)
   }
-  // todo.id = Date.now()
-  // todos.push(todo)
-  // localStorage.todos = JSON.stringify(todos)
-  // showTodoList()
+ 
   form.reset()
 
 }

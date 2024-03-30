@@ -38,18 +38,20 @@ async function handleLoad() {
 async function handleSearch() {
     const cardsContainer = document.querySelector("#cards");
     const searchText = document.querySelector("#search");
-    let url = "data/products.json"
-    const data = await fetch(url)
-    const productList = await data.json()
+    // let url = "data/products.json"
+    // const data = await fetch(url)
+    const productList = repo.getProducts()
+
     if (searchText.value === "") {
         let html = productListToCards(productList)
         cardsContainer.innerHTML = html
-
-
     }
     else {
         const filteredproduct = productList.filter(p => p.productName.includes(searchText.value))
-
+        if(filteredproduct.length == 0){
+            alert("Item Does Not Exitst!")
+           
+        }
         let html = productListToCards(filteredproduct)
         cardsContainer.innerHTML = html
     }
