@@ -41,6 +41,42 @@
                 </table>
             </section>
         </main>
+        <div>
+            <button class="upload-button" type = "button" id="button-add">add item</button>
+
+        </div>
+        <div class="checkout-container hidden" id="formcontainer">
+            <div class="checkout-panel">
+                
+                <div class="price-card">
+                    <!-- Address Card -->
+                <label for="itemname"><b>Item Name:</b></label>
+                    <input type="text" id="itemname" name="itemname" required>
+                </div>
+
+                <div class="price-card">
+                    <!-- Address Card -->
+                <label for="price"><b>Price:</b></label>
+                    <input type="text" id="price" name="price" required>
+                </div>
+                <br>
+                <div class="quantity-card">
+                    <!-- Quantity Card -->
+                    <label for="Quantity"><b>Quantity:</b></label>
+                    <input type="number" min="1" value="1">
+                </div>
+                <br>
+              
+                <div class="details-card">
+                    <!-- Total Card -->
+                    <label for="details"><b>Details:</b></label>
+                    <input type="text" id="details" name="details" required>
+                </div>
+                <br>
+
+                <button class="upload-button" id="upload-button" type="button">Upload</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -5,6 +5,12 @@ addEventListener("load", handleLoad);
 async function handleLoad() {
     const historyRows = document.querySelector("#table-history-body");
     const saleRows = document.querySelector("#table-sale-body");
+    const buttonadd = document.querySelector("#button-add");
+   
+    buttonadd.addEventListener("click" , handleButtonClick)
+    const buttonupload = document.querySelector("#upload-button");
+   
+    buttonupload.addEventListener("click" , handleButtonUploadClick)
 
     const userinfodiv = document.querySelector("#user-info");
     const seller = repo.getCurrentUser()
@@ -22,6 +28,14 @@ async function handleLoad() {
         userinfodiv.innerHTML = "no user"
     }
  
+}
+function handleButtonClick(e){
+    const formcontainer = document.querySelector("#formcontainer")
+    formcontainer.classList.remove("hidden")
+}
+function handleButtonUploadClick(){
+    const formcontainer = document.querySelector("#formcontainer")
+    formcontainer.classList.add("hidden")
 }
 
 function itemsforsaleToRow(product){
