@@ -1,4 +1,5 @@
 const repo = new Repository()
+let productid
 addEventListener("load" , handlePageLoad)
 async function handlePageLoad(){
     const balancespan= document.querySelector("#balancespan")
@@ -16,10 +17,10 @@ async function handlePageLoad(){
         userinfodiv.innerHTML=`${customer.name} ${customer.surename}`
         balancespan.innerHTML=customer.moneyBalance
        
-        const products = repo.getProducts()
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const currentproductid = urlParams.get('productId')
+        productid=currentproductid
         if (currentproductid){
         const product= repo.getProduct(currentproductid)
             itemnamespan.innerHTML=product.productName
@@ -61,9 +62,18 @@ async function handleFormSubmit(e){
     customer.moneyBalance=balance
     repo.updateCurrentCustomer(customer)
     balancespan.innerHTML=balance
+    const purchase={
+      itemid:productid,
+      customerid : customer.id ,
+      date: new Date().toISOString().substring(0,10)
+      ,
+      quantity: formobject.quantity,
+      total: formobject.total
 
+    }
+    repo.addHistory(purchase)
       alert("Purchase sucssful ")
-    
+      window.location.href="search.html"
 
 
   }else{

@@ -4,11 +4,12 @@ class Repository {
         this.customerspath = "data/customers.json"
         this.sellerpath = "data/sellers.json"
         this.productspath = "data/products.json"
+        this.historypath = "data/history.json"
         this.initialize()
     }
     async initialize() {
         const allpaths = [
-            this.userspath, this.customerspath, this.sellerpath, this.productspath
+            this.userspath, this.customerspath, this.sellerpath, this.productspath, this.historypath
 
         ]
         if (!localStorage.getItem("data_loaded")) {
@@ -41,11 +42,22 @@ class Repository {
         return data
 
     }
+    getHistory() {
+        const data = JSON.parse(localStorage.getItem(this.historypath))
+        return data
+
+    }
     getProduct(id) {
         const product = this.getProducts().find(p => p.id == parseInt(id))
         return product
 
     }
+    getCustomer(id) {
+        const customer = this.getCustomers().find(c => c.id == parseInt(id))
+        return customer
+
+    }
+
     getCurrentUser() {
         if (localStorage.getItem("userobject"))
             return JSON.parse(localStorage.getItem("userobject"))
@@ -86,5 +98,25 @@ class Repository {
         }
         return user
 
+    }
+    clear(){
+        localStorage.clear()
+    }
+
+    addHistory(purchase){
+        const history= this.getHistory()
+        history.push(purchase)
+        localStorage.setItem(this.historypath, JSON.stringify(history))
+
+    }
+
+    getCustomerHistory(customerid){
+        const customer = this.getCustomer(customerid)
+        const history= this.getHistory()
+        for (const h of history) {
+            const product = this.getProduct(h.itemid)
+            h.product=product
+        }
+        return history
     }
 }

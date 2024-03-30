@@ -1,98 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/history.css"> 
+    <link rel="stylesheet" href="css/history.css">
     <title>Purchase History</title>
+    <script src="js/Repository.js"></script>
+    <script src="js/history.js"></script>
 </head>
 
-    <body>
-        <div class="page-layout">
-            <header class="header">
-                <div class="user-info"><b>Username</b>
-                </div>
-                <h3>HANDMADE ENGINEER</h3>
-                <br>
-                <hr>
-                <br>
-                <h1 id="title"><b>Purchase History</b></h1>
-            </header>
-    
-            <main class="main-container">
-                
-                <div class="item-container">
-                    <div class="item-card">
-                        <div class="left-side">
-                            <img src="images/item1.jpg" alt="Item 1">
-                            <h3>Item Name </h3>
-                        </div>
-                        <div class="right-side">
-                            <div class="item-info">
-                                <label for="Quantity"><b>Quantity:</b></label>
-                                <input type="number" min="1" value="1">
-                            </div>
-                            <div class="item-info">
-                                <label for="price"><b>Price:</b></label>
-                                <input type="number" id="price" name="price" required>
-                            </div>
-                            <div class="item-info">
-                                <label for="Total"><b>Total:</b></label>
-                                <input type="number" id="total" name="total">
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="item-card">
-                        <div class="left-side">
-                            <img src="images/item2.jpg" alt="Item 2">
-                            <h3>Item Name </h3>
-                        </div>
-                        <div class="right-side">
-                            <div class="item-info">
-                                <label for="Quantity"><b>Quantity:</b></label>
-                                <input type="number" min="1" value="1">
-                            </div>
-                            <div class="item-info">
-                                <label for="price"><b>Price:</b></label>
-                                <input type="number" id="price" name="price" required>
-                            </div>
-                            <div class="item-info">
-                                <label for="Total"><b>Total:</b></label>
-                                <input type="number" id="total" name="total">
-                            </div>
-                        </div>
-                    </div>
+<body>
+    <div class="page-layout">
+        <header class="header">
+            <div class="user-info" id="user-info"><b>Username</b>
+            </div>
+            <h3>HANDMADE ENGINEER</h3>
+            <br>
+            <hr>
+            <br>
+            <h1 id="title"><b>Purchase History</b></h1>
+        </header>
 
-                    <div class="item-card">
-                        <div class="left-side">
-                            <img src="images/item2.jpg" alt="Item 2">
-                            <h3>Item Name </h3>
-                        </div>
-                        <div class="right-side">
-                            <div class="item-info">
-                                <label for="Quantity"><b>Quantity:</b></label>
-                                <input type="number" min="1" value="1">
-                            </div>
-                            <div class="item-info">
-                                <label for="price"><b>Price:</b></label>
-                                <input type="number" id="price" name="price" required>
-                            </div>
-                            <div class="item-info">
-                                <label for="Total"><b>Total:</b></label>
-                                <input type="number" id="total" name="total">
-                            </div>
-                        </div>
-                    </div>
-    
-                   
-    
-    
-    
-                </div>
-            </main>
-        </div>
-    </body>
+        <main class="main-container">
+
+            <div class="item-container" id="cards">
+                
+
+                
+
+
+
+
+            </div>
+        </main>
+    </div>
+</body>
 
 
 </html>
