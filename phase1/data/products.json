@@ -51,4 +51,14 @@
     "sellerID":5,
     "quantity": 25
   }
+  ,
+  {
+    "id":7,
+    "productName": "Cup",
+    "productImg": "cup.jpg",
+    "productPrice": 100,
+    "sellerID":2,
+    "quantity": 2
+  }
+
 ]
