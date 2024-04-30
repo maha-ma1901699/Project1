@@ -8,7 +8,8 @@ buttonLogin.addEventListener("click", handleLoginClick);
 async function handleLoginClick() {
     let strUserName = inputUserName.value 
     let strPassword =inputPassword.value
-    const user = repo.login(strUserName,strPassword)
+    const user = await repo.login(strUserName,strPassword)
+    console.log("the user recived at the login.js",user);
     if (! user){
         alert ("Invalid username or password")
     } else{

@@ -7,7 +7,7 @@ async function handleLoad() {
     const search_button = document.querySelector("#search_button");
     const userinfodiv = document.querySelector("#user-info");
     const logindiv = document.querySelector("#login");
-    const customer = repo.getCurrentUser()
+    const customer = await repo.getCurrentUser()
     if (customer) {
 
         userinfodiv.innerHTML = `${customer.name} ${customer.surename}`
@@ -22,7 +22,7 @@ async function handleLoad() {
 
     // alert("hello") 
    
-    const productList = repo.getProducts()
+    const productList = await repo.getProducts()
     let html = productListToCards(productList)
     //STOPPED HERE!!!
     if (cardsContainer) {
@@ -40,14 +40,15 @@ async function handleSearch() {
     const searchText = document.querySelector("#search");
     // let url = "data/products.json"
     // const data = await fetch(url)
-    const productList = repo.getProducts()
+    const productList = await repo.getProducts()
 
     if (searchText.value === "") {
         let html = productListToCards(productList)
         cardsContainer.innerHTML = html
     }
     else {
-        const filteredproduct = productList.filter(p => p.productName.includes(searchText.value))
+        //here i will get the searched products from dataBase to avoid filtering here
+        const filteredproduct =  await repo.searchProduct(searchText.value)
         if(filteredproduct.length == 0){
             alert("Item Does Not Exitst!")
            

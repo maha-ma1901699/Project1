@@ -5,11 +5,11 @@ addEventListener("load", handleLoad);
 async function handleLoad() {
     const cardsContainer = document.querySelector("#cards");
     const userinfodiv = document.querySelector("#user-info");
-    const customer = repo.getCurrentUser()
+    const customer = await repo.getCurrentUser()
     if (customer) {
 
         userinfodiv.innerHTML = `${customer.name} ${customer.surename}`
-        const customerhistory = repo.getCustomerHistory(customer.id)
+        const customerhistory = await repo.getCustomerHistory(customer.id)
         const html = customerhistory.map(h => historyToCard(h)).join('')
         cardsContainer.innerHTML = html
     }
@@ -19,6 +19,10 @@ async function handleLoad() {
 
 }
 function historyToCard(history) {
+    const purchaseDate = new Date(history.date);
+    
+    // Format the date to "yyyy-MM-dd"
+    const formattedDate = purchaseDate.toISOString().split('T')[0];
     let html = `<div class="item-card">
     <div class="left-side">
         <img src="productImages/${history.product.productImg}" alt="Item 1">
@@ -39,7 +43,7 @@ function historyToCard(history) {
         </div>
         <div class="item-info">
                     <label for="date"><b>Purchase Date</b></label>
-                    <input type="date" id="date" name="date"  value ='${history.date}'readonly>
+                    <input type="date" id="date" name="date"  value ='${formattedDate}'readonly>
                 </div>
     </div>
 </div>`

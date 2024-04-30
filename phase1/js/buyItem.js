@@ -13,7 +13,7 @@ async function handlePageLoad(){
     const form = document.querySelector("#form")
     form.addEventListener("submit", handleFormSubmit)
     quantityinput.addEventListener("change", handleQuantityChange)
-    const customer = repo.getCurrentUser()
+    const customer = await repo.getCurrentUser()
     if(customer){
         
         userinfodiv.innerHTML=`${customer.name} ${customer.surename}`
@@ -24,7 +24,7 @@ async function handlePageLoad(){
         const currentproductid = urlParams.get('productId')
         productid=parseInt(currentproductid)
         if (currentproductid){
-        const product= repo.getProduct(currentproductid)
+        const product= await repo.getProductById(Number(currentproductid))
             itemnamespan.innerHTML=product.productName
             itempricespan.innerHTML=product.productPrice
             itemimage.src=`productImages/${product.productImg}`
@@ -61,22 +61,20 @@ async function handleFormSubmit(e){
   formobject.total= parseInt(formobject.total)
   if (formobject.total<=balance){
     balance= balance-formobject.total
-    const customer = repo.getCurrentUser()
+    const customer = await repo.getCurrentUser()
 
     customer.moneyBalance=balance
-    repo.updateCurrentCustomer(customer)
-    repo.updateProductSaleQuantity(productid,parseInt(formobject.quantity))
+    await repo.updateCurrentCustomer(customer)
+   await repo.updateProductSaleQuantity(productid,parseInt(formobject.quantity))
     balancespan.innerHTML=balance
     const purchase={
       itemid:productid,
-      customerid : customer.id ,
-      date: new Date().toISOString().substring(0,10)
-      ,
-      quantity: formobject.quantity,
+      customerid : customer.id,
+      quantity: Number(formobject.quantity),
       total: formobject.total
 
     }
-    repo.addHistory(purchase)
+    await repo.addHistory(purchase)
       alert("Purchase sucssful ")
       window.location.href="search.html"
 

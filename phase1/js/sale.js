@@ -12,14 +12,14 @@ async function handleLoad() {
     // buttonupload.addEventListener("click" , handleButtonUploadClick)
 
     const userinfodiv = document.querySelector("#user-info");
-    const seller = repo.getCurrentUser()
+    const seller = await repo.getCurrentUser()
     if (seller) {
 
         userinfodiv.innerHTML = `${seller.companyName}`
-        const sellerhistory = repo.getSellerHistory(seller.id)
+        const sellerhistory = await repo.getSellerHistory(seller.id)
         const html = sellerhistory.map(h => historyToRow(h)).join('')
         historyRows.innerHTML = html
-        const itemsforsale = repo.getItemsForSale(seller.id)
+        const itemsforsale = await repo.getItemsForSale(seller.id)
         const html2 = itemsforsale.map(h => itemsforsaleToRow(h)).join('')
         saleRows.innerHTML = html2
         const selleridhidden = document.querySelector("#sellerID");
@@ -40,21 +40,21 @@ function handleButtonClick(e){
     const buttonupload = document.querySelector("#upload-button");
     buttonupload.addEventListener("click" , handleButtonUploadClick)
 }
-function handleButtonUploadClick(){
+async function handleButtonUploadClick(){
     const itemform = document.querySelector("#itemform")
     const item = formToObject(itemform)
-    repo.addProduct(item)
+    await repo.addProduct(item)
     alert("Item Added Sucessfully!")
     const formcontainer = document.querySelector("#formcontainer")
     formcontainer.classList.add("hidden")
     window.location.href = "sales.html"
 }
-function handleEdit(){
+async function handleEdit(){
     const itemform = document.querySelector("#itemform")
     const item = formToObject(itemform)
 
 
-    repo.updateProduct(item)
+    await repo.updateProduct(item)
     alert("Item Editted Sucessfully!")
     const formcontainer = document.querySelector("#formcontainer")
     formcontainer.classList.add("hidden")
@@ -68,7 +68,11 @@ return html
 }
 
 function historyToRow(history){
-    const html = `<tr> <td> ${history.product.productName}</td> <td>${history.date}</td> <td> ${history.customer.name} </td> 
+    const purchaseDate = new Date(history.date);
+    
+    // Format the date to "yyyy-MM-dd"
+    const formattedDate = purchaseDate.toISOString().split('T')[0];
+    const html = `<tr> <td> ${history.product.productName}</td> <td>${formattedDate}</td> <td> ${history.customer.name} </td> 
     <td> ${history.quantity} </td> <td> ${history.product.productPrice} </td></tr>`
     return html
 
@@ -76,16 +80,21 @@ function historyToRow(history){
 function formToObject(form){
     const formData = new FormData(form)
     const data = {}
-    for (const [key, value] of formData){
-        data[key] = value
+    for (const [key, value] of formData) {
+        if (value instanceof File) {
+            // If the value is a File object, set it to the file name
+            data[key] = value.name;
+        } else {
+            data[key] = value;
+        }
     }
     return data
   }
   
-  function editProduct(event,id){
+  async function editProduct(event,id){
     event.preventDefault()
-    const product = repo.getProduct(id)
-    const seller = repo.getCurrentUser()
+    const product = await repo.getProductById(Number(id))
+    const seller = await repo.getCurrentUser()
     
     const itemname = document.querySelector("#itemname")
     const price = document.querySelector("#price") 
