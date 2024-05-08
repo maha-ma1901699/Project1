@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Define the Customer model
+model Customer {
+  id              Int       @id @default(autoincrement())
+  name            String
+  surename        String
+  shippingAddress String
+  moneyBalance    Float
+  // Define a relationship to the History model
+  purchases       History[]
+}
+
+// Define the History model
+model History {
+  id           Int      @id @default(autoincrement())
+  itemid       Int
+  customerid   Int
+  date         DateTime @default(now())
+  quantity     Int
+  total        Float
+
+  // Define a relationship to the Customer model
+  customer     Customer @relation(fields: [customerid], references: [id])
+
+  // Define a relationship to the Product model
+  product      Product @relation(fields: [itemid], references: [id])
+}
+
+
+// Define the Product model
+model Product {
+  id           Int       @id @default(autoincrement())
+  productName  String
+  productImg   String
+  productPrice Float
+  seller       Seller    @relation(fields: [sellerID], references: [id])
+  sellerID     Int
+  quantity     Int
+  History      History[]
+}
+
+// Define the Seller model
+model Seller {
+  id          Int       @id @default(autoincrement())
+  companyName String
+  bankAccount String
+  // Define a relationship to the Product model
+  products    Product[]
+}
+
+// Define the User model
+model User {
+  id       Int      @id @default(autoincrement())
+  username String
+  password String
+  type     UserType
+}
+
+// Define an enum for user types
+enum UserType {
+  admin
+  customer
+  seller
+}
